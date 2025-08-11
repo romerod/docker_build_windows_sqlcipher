@@ -41,11 +41,12 @@ mkdir -p "$BUILD_DIR"
 # Get packages
 
 apt-get update
+export DEBIAN_FRONTEND=noninteractive
 apt-get install -y --no-install-recommends \
                    autoconf \
                    automake \
                    build-essential \
-                   bsdtar \
+                   libarchive-tools \
                    ca-certificates \
                    cmake \
                    git \
