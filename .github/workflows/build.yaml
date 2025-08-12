@@ -1,0 +1,59 @@
+name: Build OpenSSL and SQLCipher
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: docker build -t builder .
+
+    - name: Run build container
+      run: |
+        docker run --rm \
+          -v "${{ github.workspace }}:/output:rw" \
+          builder
+
+    - name: Read release name
+      id: release_name
+      run: |
+        echo "RELEASE_NAME=$(cat release_name.txt)" >> $GITHUB_ENV
+
+    - name: Create ZIP archive
+      run: |
+        mkdir -p release
+        cp x64/e_sqlite3.dll release/x64/
+        cp x64/sqlite3.exe release/x64/
+        cp x86/e_sqlite3.dll release/x86/
+        cp x86/sqlite3.exe release/x86/
+        zip -r "${RELEASE_NAME}.zip" release
+    
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-package
+        path: ${{ env.RELEASE_NAME }}.zip
+
+    - name: Create GitHub Release
+      if: github.event_name != 'pull_request'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ env.RELEASE_NAME }}
+        name: Release ${{ env.RELEASE_NAME }}
+        files: |
+          ${{ env.RELEASE_NAME }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+

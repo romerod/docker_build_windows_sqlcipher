@@ -57,3 +57,6 @@ make sqlite3.dll USE_NATIVE_LIBPATHS=1 "OPTS=-DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENA
 mkdir -p "$OUTPUT_DIR/x64"
 cp "$SQLCIPHER_PREFIX_DIR/bin/sqlite3.exe" "$OUTPUT_DIR/x64/"
 cp "/build/sqlcipher-${SQLCIPHER_VERSION:1}/sqlite3.dll" "$OUTPUT_DIR/x64/e_sqlite3.dll"
+
+RELEASE_NAME="${OPENSSL_VERSION}_sqlcipher_${SQLCIPHER_VERSION:1}"
+echo "$RELEASE_NAME" > "$OUTPUT_DIR/release_name.txt"
