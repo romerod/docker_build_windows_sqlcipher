@@ -1,0 +1,21 @@
+{
+  "extends": ["config:base"],
+  "regexManagers": [
+    {
+      "fileMatch": ["build_base\\.sh"],
+      "matchStrings": [
+        "OPENSSL_VERSION=\"(?<currentValue>.+)\""
+      ],
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "openssl/openssl"
+    },
+    {
+      "fileMatch": ["build\\.sh"],
+      "matchStrings": [
+        "SQLCIPHER_VERSION=\"(?<currentValue>.+)\""
+      ],
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "sqlcipher/sqlcipher"
+    }
+  ]
+}
