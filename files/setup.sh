@@ -27,15 +27,15 @@
 
 readonly WORKSPACE_DIR="/workspace"
 readonly BUILD_DIR="/build"
-readonly DEP_DIR="$WORKSPACE_DIR/$ARCH/dep-cache"
-readonly APT_CACHE_DIR="$WORKSPACE_DIR/$ARCH/apt_cache"
+readonly DEP_DIR_64="$WORKSPACE_DIR/x86_64/dep-cache"
+readonly DEP_DIR_32="$WORKSPACE_DIR/i686/dep-cache"
 
 # Create the expected directory structure
 
 # Just make sure those exist
 mkdir -p "$WORKSPACE_DIR"
-mkdir -p "$DEP_DIR"
-mkdir -p "$APT_CACHE_DIR"
+mkdir -p "$DEP_DIR_64"
+mkdir -p "$DEP_DIR_32"
 mkdir -p "$BUILD_DIR"
 
 # Get packages
