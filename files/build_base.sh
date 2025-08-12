@@ -32,7 +32,7 @@ readonly DEP_DIR_64="$WORKSPACE_DIR/x86_64/dep-cache"
 readonly DEP_DIR_32="$WORKSPACE_DIR/i686/dep-cache"
 readonly OPENSSL_PREFIX_DIR_64="$DEP_DIR_64/libopenssl"
 readonly OPENSSL_PREFIX_DIR_32="$DEP_DIR_32/libopenssl"
-readonly OPENSSL_VERSION=openssl-3.5.2
+readonly OPENSSL_VERSION="openssl-3.5.2"
 
 # Build dir should be empty
 
