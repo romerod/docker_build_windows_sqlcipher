@@ -4,15 +4,16 @@
     {
       "fileMatch": ["build_base\\.sh"],
       "matchStrings": [
-        "OPENSSL_VERSION=\"(?<currentValue>.+)\""
+        "OPENSSL_VERSION=\"(?<currentValue>openssl-[^\"]+)\""
       ],
       "datasourceTemplate": "github-tags",
-      "packageNameTemplate": "openssl/openssl"
+      "packageNameTemplate": "openssl/openssl",
+      "extractVersionTemplate": "^openssl-(?<version>.*)$"
     },
     {
       "fileMatch": ["build\\.sh"],
       "matchStrings": [
-        "SQLCIPHER_VERSION=\"(?<currentValue>.+)\""
+        "SQLCIPHER_VERSION=\"(?<currentValue>[^\"]+)\""
       ],
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "sqlcipher/sqlcipher"
