@@ -6,7 +6,7 @@
       "matchStrings": [
         "OPENSSL_VERSION=\"(?<currentValue>.+)\""
       ],
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "packageNameTemplate": "openssl/openssl"
     },
     {
