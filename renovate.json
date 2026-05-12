@@ -7,13 +7,12 @@
       "matchStrings": ["OPENSSL_VERSION=\"(?<prefix>openssl-)(?<currentValue>[^\"]+)\""],
       "datasourceTemplate": "github-tags",
       "packageNameTemplate": "openssl/openssl",
-      "extractVersionTemplate": "^openssl-(?<version>.*)$",
       "autoReplaceStringTemplate": "OPENSSL_VERSION=\"{{{prefix}}}{{{newValue}}}\"",
       "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
-      "managerFilePatterns": ["/build\\.sh/"],
+      "managerFilePatterns": ["/^files/build\\.sh$/"],
       "matchStrings": ["SQLCIPHER_VERSION=\"(?<currentValue>[^\"]+)\""],
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "sqlcipher/sqlcipher"
