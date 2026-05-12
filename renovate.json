@@ -4,16 +4,21 @@
     {
       "customType": "regex",
       "managerFilePatterns": ["/^files/build_base\\.sh$/"],
-      "matchStrings": ["OPENSSL_VERSION=\"(?<prefix>openssl-)(?<currentValue>[^\"]+)\""],
+      "matchStrings": [
+        "OPENSSL_VERSION=\"(?<prefix>openssl-)(?<currentValue>[^\"]+)\""
+      ],
       "datasourceTemplate": "github-tags",
       "packageNameTemplate": "openssl/openssl",
-      "autoReplaceStringTemplate": "OPENSSL_VERSION=\"{{{prefix}}}{{{newValue}}}\"",
-      "versioningTemplate": "semver"
+      "versioningTemplate": "semver-coerced",
+      "extractVersionTemplate": "^openssl-(?<version>.*)$",
+      "autoReplaceStringTemplate": "OPENSSL_VERSION=\"{{{prefix}}}{{{newValue}}}\""
     },
     {
       "customType": "regex",
       "managerFilePatterns": ["/^files/build\\.sh$/"],
-      "matchStrings": ["SQLCIPHER_VERSION=\"(?<currentValue>[^\"]+)\""],
+      "matchStrings": [
+        "SQLCIPHER_VERSION=\"(?<currentValue>[^\"]+)\""
+      ],
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "sqlcipher/sqlcipher"
     }
