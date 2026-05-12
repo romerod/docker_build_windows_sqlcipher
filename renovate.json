@@ -5,13 +5,13 @@
       "customType": "regex",
       "managerFilePatterns": ["/^files/build_base\\.sh$/"],
       "matchStrings": [
-        "OPENSSL_VERSION=\"(?<prefix>openssl-)(?<currentValue>[^\"]+)\""
+        "OPENSSL_VERSION=\"openssl-(?<currentValue>[^\"]+)\""
       ],
       "datasourceTemplate": "github-tags",
       "packageNameTemplate": "openssl/openssl",
       "versioningTemplate": "semver-coerced",
       "extractVersionTemplate": "^openssl-(?<version>.*)$",
-      "autoReplaceStringTemplate": "OPENSSL_VERSION=\"{{{prefix}}}{{{newValue}}}\""
+      "autoReplaceStringTemplate": "OPENSSL_VERSION=\"openssl-{{{newValue}}}\""
     },
     {
       "customType": "regex",
