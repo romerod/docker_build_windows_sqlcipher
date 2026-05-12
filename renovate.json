@@ -2,13 +2,15 @@
   "extends": ["config:base"],
   "regexManagers": [
     {
-      "fileMatch": ["build_base\\.sh"],
+      "fileMatch": ["^files/build_base\\.sh$"],
       "matchStrings": [
-        "OPENSSL_VERSION=\"(?<currentValue>openssl-[^\"]+)\""
+        "OPENSSL_VERSION=\"(?<prefix>openssl-)(?<currentValue>[^\"]+)\""
       ],
       "datasourceTemplate": "github-tags",
       "packageNameTemplate": "openssl/openssl",
-      "extractVersionTemplate": "^openssl-(?<version>.*)$"
+      "extractVersionTemplate": "^openssl-(?<version>.*)$",
+      "autoReplaceStringTemplate": "OPENSSL_VERSION=\"{{{prefix}}}{{{newValue}}}\"",
+      "versioningTemplate": "semver"
     },
     {
       "fileMatch": ["build\\.sh"],
